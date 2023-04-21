@@ -6,7 +6,7 @@ import com.example.domain.repository.BlogsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class BlogsUseCase(private val getBlogsRepository: BlogsRepository) {
+class GetBlogsUseCase(private val getBlogsRepository: BlogsRepository) {
 
     suspend operator fun invoke(): Flow<Resource<List<Blogs.Blog>>> = flow {
 
