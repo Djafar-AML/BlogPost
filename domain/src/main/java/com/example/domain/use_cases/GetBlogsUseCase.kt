@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 
 class GetBlogsUseCase(private val getBlogsRepository: BlogsRepository) {
 
-    suspend operator fun invoke(): Flow<Resource<List<Blogs.Blog>>> = flow {
+    operator fun invoke(): Flow<Resource<List<Blogs.Blog>>> = flow {
 
         emit(Resource.Loading(null))
 
