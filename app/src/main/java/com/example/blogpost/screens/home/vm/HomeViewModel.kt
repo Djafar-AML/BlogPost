@@ -20,7 +20,11 @@ class HomeViewModel @Inject constructor(
     private val _blogs = mutableStateOf(HomeState())
     val blogs: State<HomeState> = _blogs
 
-    fun getBlogs() {
+    init {
+        getBlogs()
+    }
+
+    private fun getBlogs() {
 
         getBlogsUseCase().onEach { resource ->
 

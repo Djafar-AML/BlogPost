@@ -23,7 +23,6 @@ import javax.inject.Singleton
 object NetworkModule {
 
     @Provides
-    @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
 
         return HttpLoggingInterceptor().apply {
@@ -35,7 +34,6 @@ object NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
 
         return OkHttpClient.Builder()
@@ -47,19 +45,16 @@ object NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun provideMoshiInstance(): Moshi {
         return Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
     }
 
 
     @Provides
-    @Singleton
     fun provideMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory =
         MoshiConverterFactory.create(moshi)
 
     @Provides
-    @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         moshiConverterFactory: MoshiConverterFactory
@@ -74,7 +69,6 @@ object NetworkModule {
 
 
     @Provides
-    @Singleton
     fun provideBlogPostAppApi(retrofit: Retrofit): BlogPostAppApi {
         return retrofit.create(BlogPostAppApi::class.java)
     }
