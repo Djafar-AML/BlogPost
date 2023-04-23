@@ -1,5 +1,6 @@
 package com.example.blogpost.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -54,7 +55,9 @@ fun HomeScreen(
 
         LazyColumn {
             items(homeState.data) { blog ->
-                BlogItem(blog)
+                BlogItem(blog) { blogId ->
+                    navController.navigate("Details/$blogId")
+                }
             }
         }
     }
@@ -62,10 +65,12 @@ fun HomeScreen(
 }
 
 @Composable
-fun BlogItem(blog: Blogs.Blog) {
+fun BlogItem(blog: Blogs.Blog, blogClickListener: (String) -> Unit) {
 
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { blogClickListener(blog.id) },
         verticalArrangement = Arrangement.Center
     ) {
 

@@ -12,6 +12,10 @@ class ApiClient @Inject constructor(
         return safeApiCall { blogPostAppApi.getBlogs() }
     }
 
+    suspend fun getBlogDetails(blogId: String): SimpleResponse<BlogsDTO.BlogDTO> {
+        return safeApiCall { blogPostAppApi.getBlogDetails(blogId) }
+    }
+
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {
 
         return try {
