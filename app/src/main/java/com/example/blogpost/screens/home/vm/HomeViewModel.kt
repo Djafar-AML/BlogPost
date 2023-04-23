@@ -4,8 +4,9 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.blogpost.screens.home.HomeState
+import com.example.blogpost.screens.state.UiResourceState
 import com.example.common.util.Resource
+import com.example.domain.model.Blogs
 import com.example.domain.use_cases.GetBlogsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -17,8 +18,8 @@ class HomeViewModel @Inject constructor(
     private val getBlogsUseCase: GetBlogsUseCase
 ) : ViewModel() {
 
-    private val _blogs = mutableStateOf(HomeState())
-    val blogs: State<HomeState> = _blogs
+    private val _blogs = mutableStateOf(UiResourceState<List<Blogs.Blog>>())
+    val blogs: State<UiResourceState<List<Blogs.Blog>>> = _blogs
 
     init {
         getBlogs()
@@ -30,14 +31,14 @@ class HomeViewModel @Inject constructor(
 
             when (resource) {
                 is Resource.Loading -> {
-                    _blogs.value = HomeState(isLoading = true)
+                    _blogs.value = UiResourceState(isLoading = true)
                 }
 
                 is Resource.Success -> {
-                    _blogs.value = HomeState(data = resource.data)
+                    _blogs.value = UiResourceState(data = resource.data)
                 }
                 is Resource.Error -> {
-                    _blogs.value = HomeState(error = resource.message.toString())
+                    _blogs.value = UiResourceState(error = resource.message.toString())
                 }
             }
         }.launchIn(viewModelScope)

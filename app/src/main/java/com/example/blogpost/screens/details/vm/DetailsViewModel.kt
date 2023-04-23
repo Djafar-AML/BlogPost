@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.blogpost.screens.state.ResourceState
+import com.example.blogpost.screens.state.UiResourceState
 import com.example.common.util.Resource
 import com.example.domain.model.Blogs
 import com.example.domain.use_cases.BlogDetailsUseCase
@@ -20,8 +20,8 @@ class DetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _blogDetailsState = mutableStateOf(ResourceState<Blogs.Blog>())
-    val blogDetails: State<ResourceState<Blogs.Blog>> = _blogDetailsState
+    private val _blogDetailsState = mutableStateOf(UiResourceState<Blogs.Blog>())
+    val blogDetails: State<UiResourceState<Blogs.Blog>> = _blogDetailsState
 
     init {
         savedStateHandle.getLiveData<String>("blogId").value?.let { blogId ->
@@ -35,13 +35,13 @@ class DetailsViewModel @Inject constructor(
 
             when (blogResource) {
                 is Resource.Loading -> {
-                    _blogDetailsState.value = ResourceState(isLoading = true)
+                    _blogDetailsState.value = UiResourceState(isLoading = true)
                 }
                 is Resource.Success -> {
-                    _blogDetailsState.value = ResourceState(data = blogResource.data)
+                    _blogDetailsState.value = UiResourceState(data = blogResource.data)
                 }
                 is Resource.Error -> {
-                    _blogDetailsState.value = ResourceState(error = blogResource.message.toString())
+                    _blogDetailsState.value = UiResourceState(error = blogResource.message.toString())
                 }
             }
 

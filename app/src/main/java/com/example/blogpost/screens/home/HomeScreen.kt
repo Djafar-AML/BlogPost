@@ -22,6 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.blogpost.screens.home.vm.HomeViewModel
+import com.example.blogpost.screens.state.UiResourceState
 import com.example.domain.model.Blogs
 
 
@@ -32,7 +33,7 @@ fun HomeScreen(
 ) {
 
 
-    val homeState: HomeState = viewModel.blogs.value
+    val homeState: UiResourceState<List<Blogs.Blog>> = viewModel.blogs.value
 
 
     if (homeState.isLoading) {
