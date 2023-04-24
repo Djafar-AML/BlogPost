@@ -1,8 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -40,49 +38,4 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    // coil
-    implementation("io.coil-kt:coil-compose:2.3.0")
-
-    // compose navigation
-    def nav_version = "2.5.3"
-    implementation "androidx.navigation:navigation-compose:$nav_version"
-
-    // region dagger-hilt di
-    implementation "com.google.dagger:hilt-android:2.44.2"
-    kapt "com.google.dagger:hilt-compiler:2.44.2"
-    // hilt compose
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
-    // endregion dagger-hilt di
-
-    // region coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
-    // Lifecycle things (coroutines)
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-    // endregion coroutines
-
-    // region retrofit and moshi
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
-    implementation 'com.squareup.moshi:moshi:1.14.0'
-    implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
-    // endregion retrofit and moshi
-
-    // region http log interceptor
-    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.7"
-    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7"
-    // endregion http log interceptor
-
-    // ViewModel utilities for Compose
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
-
-
-    // system ui controller
-    implementation "com.google.accompanist:accompanist-systemuicontroller:0.31.0-alpha"
-    // flow layout
-    implementation "com.google.accompanist:accompanist-flowlayout:0.31.0-alpha"
-
 }
