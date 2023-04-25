@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.blogpost.navigation.NavigationItem
+import com.example.blogpost.navigation.Routes
 import com.example.blogpost.screens.details.DetailsScreen
 import com.example.blogpost.screens.home.HomeScreen
 import com.example.blogpost.ui.theme.BlogPostTheme
@@ -33,14 +33,14 @@ class MainActivity : ComponentActivity() {
                     BlogApp {
                         NavHost(
                             navController = navController,
-                            startDestination = NavigationItem.Home.route
+                            startDestination = Routes.Home.route
                         ) {
 
-                            composable(NavigationItem.Home.route) {
+                            composable(Routes.Home.route) {
                                 HomeScreen(navController)
                             }
 
-                            composable(NavigationItem.DetailsScreen.route) {
+                            composable(Routes.DetailsScreen.route) {
                                 DetailsScreen()
                             }
                         }
