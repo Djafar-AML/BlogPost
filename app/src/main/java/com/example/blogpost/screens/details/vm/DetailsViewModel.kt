@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.blogpost.screens.state.UiResourceState
+import com.example.blogpost.util.localizeErrorMessage
 import com.example.common.util.Resource
 import com.example.domain.model.Blogs
 import com.example.domain.use_cases.BlogDetailsUseCase
@@ -31,21 +32,27 @@ class DetailsViewModel @Inject constructor(
 
     private fun getBlogDetails(blogId: String) {
 
-        blogDetailsUseCase(blogId).onEach { blogResource ->
+        blogDetailsUseCase(blogId).onEach { resource: Resource<Blogs.Blog> ->
 
-            when (blogResource) {
+            when (resource) {
+
                 is Resource.Loading -> {
                     _blogDetailsState.value = UiResourceState(isLoading = true)
                 }
+
                 is Resource.Success -> {
-                    _blogDetailsState.value = UiResourceState(data = blogResource.data)
+                    _blogDetailsState.value = UiResourceState(data = resource.data)
                 }
+
                 is Resource.Error -> {
-                    _blogDetailsState.value = UiResourceState(error = blogResource.message.toString())
+
+                    val errorMessage = localizeErrorMessage(resource.errorEntity!!)
+                    _blogDetailsState.value = UiResourceState(error = errorMessage)
                 }
             }
 
         }.launchIn(viewModelScope)
 
     }
+
 }

@@ -3,5 +3,5 @@ package com.example.domain.repository
 import com.example.domain.model.Blogs
 
 interface BlogsRepository {
-    suspend fun getBlogs(): List<Blogs.Blog>
+    suspend fun getBlogs(): com.example.common.util.Result<List<Blogs.Blog>>
 }

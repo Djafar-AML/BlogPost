@@ -9,9 +9,11 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object BlogDetailsUseModule {
+object BlogDetailsUseCaseModule {
 
     @Provides
-    fun providesBlogDetailsUseCase(blogIDetailsRepo: BlogDetailsRepository): BlogDetailsUseCase =
+    fun providesBlogDetailsUseCase(
+        blogIDetailsRepo: BlogDetailsRepository,
+    ): BlogDetailsUseCase =
         BlogDetailsUseCase(blogIDetailsRepo)
 }

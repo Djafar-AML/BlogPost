@@ -1,7 +1,10 @@
 package com.example.data.network.model
 
+import com.squareup.moshi.Json
+
 data class BlogsDTO(
-    val data: List<BlogDTO> = listOf(),
+    @Json(name = "data")
+    val blogDTOList: List<BlogDTO> = listOf(),
     val total: Int = 0,
     val page: Int = 0,
     val limit: Int = 0

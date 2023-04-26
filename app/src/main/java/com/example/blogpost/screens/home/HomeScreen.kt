@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.blogpost.navigation.Routes
 import com.example.blogpost.screens.home.vm.HomeViewModel
 import com.example.blogpost.screens.state.UiResourceState
 import com.example.domain.model.Blogs
