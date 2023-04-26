@@ -1,11 +1,8 @@
 package com.example.data.network.service
 
-sealed class SimpleResponse<T>(
-    private val data: T? = null,
-    private val throwable: Throwable? = null
-) {
+sealed class SimpleResponse<T> {
 
-    data class Success<T>(val data: T) : SimpleResponse<T>(data)
-    data class Failure<T>(val throwable: Throwable) : SimpleResponse<T>(throwable = throwable)
+    data class Success<T>(val data: T) : SimpleResponse<T>()
+    data class Failure<T>(val throwable: Throwable) : SimpleResponse<T>()
 
 }
