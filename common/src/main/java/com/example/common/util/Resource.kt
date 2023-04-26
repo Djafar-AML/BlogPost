@@ -2,12 +2,12 @@ package com.example.common.util
 
 import com.example.common.exception.ErrorEntity
 
-sealed class Resource<T>(val data: T? = null, val errorEntity: ErrorEntity? = null) {
+sealed class Resource<T>(private val data: T? = null, private val errorEntity: ErrorEntity? = null) {
 
-    class Success<T>(data: T?) : Resource<T>(data = data)
+    class Success<T>(val data: T) : Resource<T>(data = data)
 
     class Loading<T> : Resource<T>()
 
-    class Error<T>(error: ErrorEntity?) : Resource<T>(errorEntity = error)
+    class Error<T>(val errorEntity: ErrorEntity) : Resource<T>(errorEntity = errorEntity)
 
 }

@@ -24,7 +24,7 @@ class BlogsRepositoryImpl(
             }
 
             is SimpleResponse.Failure -> {
-                val throwable = response.throwable!!
+                val throwable = response.throwable
                 val errorEntity = localError.mapThrowableToErrorEntity(throwable)
                 Result.Error(errorEntity)
             }

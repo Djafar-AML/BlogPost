@@ -46,7 +46,7 @@ class DetailsViewModel @Inject constructor(
 
                 is Resource.Error -> {
 
-                    val errorMessage = localizeErrorMessage(resource.errorEntity!!)
+                    val errorMessage = localizeErrorMessage(resource.errorEntity)
                     _blogDetailsState.value = UiResourceState(error = errorMessage)
                 }
             }

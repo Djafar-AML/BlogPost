@@ -41,7 +41,7 @@ class HomeViewModel @Inject constructor(
                 }
 
                 is Resource.Error -> {
-                    val errorMessage = localizeErrorMessage(resource.errorEntity!!)
+                    val errorMessage = localizeErrorMessage(resource.errorEntity)
                     _blogs.value = UiResourceState(error = errorMessage)
                 }
 
