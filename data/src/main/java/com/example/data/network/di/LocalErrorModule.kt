@@ -1,7 +1,7 @@
 package com.example.data.network.di
 
-import com.example.data.repository.LocalErrorImpl
-import com.example.domain.repository.LocalError
+import com.example.data.network.exception.LocalExceptionImpl
+import com.example.domain.exception.LocalException
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,5 +12,5 @@ import dagger.hilt.components.SingletonComponent
 object LocalErrorModule {
 
     @Provides
-    fun providesLocalError(): LocalError = LocalErrorImpl()
+    fun providesLocalError(): LocalException = LocalExceptionImpl()
 }

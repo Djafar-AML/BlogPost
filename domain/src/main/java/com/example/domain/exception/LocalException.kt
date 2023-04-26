@@ -1,7 +1,7 @@
-package com.example.domain.repository
+package com.example.domain.exception
 
 import com.example.common.exception.ErrorEntity
 
-interface LocalError {
+interface LocalException {
     fun mapThrowableToErrorEntity(throwable: Throwable): ErrorEntity
 }

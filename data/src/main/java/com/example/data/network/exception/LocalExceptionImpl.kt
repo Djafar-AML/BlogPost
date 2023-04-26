@@ -1,12 +1,12 @@
-package com.example.data.repository
+package com.example.data.network.exception
 
 import com.example.common.exception.ErrorEntity
-import com.example.domain.repository.LocalError
+import com.example.domain.exception.LocalException
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.HttpURLConnection
 
-class LocalErrorImpl : LocalError {
+class LocalExceptionImpl : LocalException {
 
     override fun mapThrowableToErrorEntity(throwable: Throwable): ErrorEntity {
 
